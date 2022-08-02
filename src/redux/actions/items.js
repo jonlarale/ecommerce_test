@@ -5,7 +5,7 @@ export const getItemsByQuery = (query, page) => async (dispatch) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
-      "X-IBM-Client-id": "adb8204d-d574-4394-8c1a-53226a40876e",
+      "X-IBM-Client-id": `${process.env.REACT_APP_API_KEY}`,
     },
   };
 
