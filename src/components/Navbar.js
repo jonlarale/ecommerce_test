@@ -54,7 +54,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function Navbar() {
+export default function Navbar(props) {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -118,15 +118,19 @@ export default function Navbar() {
             <img src={Logo} alt="gapsi-icon" height="30" />
           </IconButton>
           <span>e-Commerce Gapsi</span>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
+          <form onSubmit={props.onSubmit}>
+            <Search>
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ "aria-label": "search" }}
+                name="query"
+              />
+              <IconButton type="submit">
+                <SearchIcon />
+              </IconButton>
+            </Search>
+          </form>
+
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <IconButton

@@ -6,9 +6,13 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
-export default function ImgMediaCard(props) {
+const ImgMediaCard = React.forwardRef((props, ref) => {
   return (
-    <Card sx={{ width: 200, cursor: "pointer" }}>
+    <Card
+      ref={ref}
+      sx={{ width: 200, cursor: "pointer" }}
+      className="mt-2 mb-2"
+    >
       <CardMedia
         component="img"
         alt="Item image"
@@ -17,7 +21,7 @@ export default function ImgMediaCard(props) {
         sx={{ objectFit: "contain" }}
       />
       <CardContent sx={{ height: 100 }}>
-        <p style={{ fontSize: 10, fontWeight: 600 }}>{props.name}</p>
+        <p style={{ fontSize: 9, fontWeight: 600 }}>{props.name}</p>
       </CardContent>
       <CardActions
         sx={{
@@ -28,9 +32,11 @@ export default function ImgMediaCard(props) {
       >
         <span>{props.price}</span>
         <Button size="small">
-          <AddShoppingCartIcon />
+          <AddShoppingCartIcon onClick={props.onClick} />
         </Button>
       </CardActions>
     </Card>
   );
-}
+});
+
+export default ImgMediaCard;

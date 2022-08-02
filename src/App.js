@@ -2,19 +2,20 @@ import React from "react";
 import { Provider } from "react-redux";
 import store from "./store";
 import "./App.css";
-import Navbar from "./components/Navbar";
 import ProductList from "./pages/ProductList";
+import Error404 from "./pages/Error404";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        <header>
-          <Navbar />
-        </header>
-        <div className="container">
-          <ProductList />
-        </div>
+        <Router>
+          <Routes>
+            <Route path="*" element={<Error404 />}></Route>
+            <Route exact path="/" element={<ProductList />}></Route>
+          </Routes>
+        </Router>
       </div>
     </Provider>
   );
